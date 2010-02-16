@@ -1,0 +1,98 @@
+#!/usr/local/bin/expect -f
+#
+############################
+# name: system_information.exp
+#
+# February 25, 2004
+#
+# Login to innopac, get system information, send email, log out.
+#
+#####################################
+
+set initials "iglesias"
+set email "edward.iglesias@ccsu.edu"
+
+
+#####################################
+#timeout set to 5 minutes
+set timeout 300
+
+#####Server 1--Telnet
+spawn ssh 149.152.10.1
+expect "login:"
+send "ctech\r"
+expect "Password:"
+send "redwings\r"
+expect "M > MANAGEMENT information"
+send "m"
+expect "I > INFORMATION about the system"
+send "i"
+expect "Please key your initials :"
+send "$initials\r"
+expect "Please key your password :"
+send "templeward\r"
+expect "F > FILE information"
+send "f"
+expect "S > SYSTEM status"
+send "s"
+expect "P > PRINT"
+send "p"
+expect "Enter full email address:"
+send "$email\r"
+send "\r"
+expect "Q > QUIT"
+send "q"
+expect "D > Catalog DATABASE"
+send "d"
+expect "P > PRINT"
+send "p"
+expect "Enter full email address:"
+send "$email\r"
+send "\r"
+expect "Q > QUIT"
+send "q"
+expect "Q > QUIT"
+send "q"
+expect "Q > QUIT"
+send "q"	
+expect "Q > QUIT"
+send "q"	
+expect "X > DISCONNECT"
+send "x"
+####Server 2--SSH
+spawn ssh ***@***.***.***.***
+expect "Password:"
+send "***\r"
+expect "M > MANAGEMENT information"
+send "m"
+expect "I > INFORMATION about the system"
+send "i"
+expect "F > FILE information"
+send "f"
+expect "S > SYSTEM status"
+send "s"
+expect "P > PRINT"
+send "p"
+expect "Enter full email address:"
+send "$email\r"
+send "\r"
+expect "Q > QUIT"
+send "q"
+expect "Q > QUIT"
+send "q"
+expect "Q > QUIT"
+send "q"
+expect "Q > QUIT"
+send "q"	
+expect "X > DISCONNECT"
+send "x"
+
+
+
+
+
+
+
+
+
+

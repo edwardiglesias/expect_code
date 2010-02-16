@@ -1,0 +1,63 @@
+#!/usr/bin/expect -f
+#
+############################
+# name: system_information.exp
+#
+# February 25, 2004
+#
+# Login to innopac, get system information, send email, log out.
+#
+#####################################
+
+set initials "initials"
+set email "email"
+
+
+#####################################
+#timeout set to 5 minutes
+set timeout 300
+
+
+####Server 2--SSH
+spawn ssh servername@serverIP
+expect "password:"
+send "password\r"
+expect "M > MANAGEMENT information"
+send "m"
+expect "I > INFORMATION about the system"
+send "i"
+expect "Please key your initials :"
+send "$initials\r"
+expect "Please key your password :"
+send "initials\r"
+expect "F > FILE information"
+send "f"
+expect "S > SYSTEM status"
+send "s"
+expect "P > PRINT"
+send "p"
+expect "Choose one (01-27,+)"
+send "18"
+expect "Enter full email address:"
+send "$email\r"
+send "\r"
+expect "Q > QUIT"
+send "q"
+expect "Q > QUIT"
+send "q"
+expect "Q > QUIT"
+send "q"
+expect "Q > QUIT"
+send "q"	
+expect "X > DISCONNECT"
+send "x"
+
+
+
+
+
+
+
+
+
+
